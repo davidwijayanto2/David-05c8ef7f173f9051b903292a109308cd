@@ -38,7 +38,7 @@
     }
     function checklogin(){
     	var flag = '<?php if(isset($_SESSION['username'])){echo true;}else{echo false;} ?>';    	
-    	if(flag=='false'){
+    	if(flag==false){
     		window.location.href = "login.php";
     	} else {
     		var username = '<?php if(isset($_SESSION['username'])){echo $_SESSION['username'];}?>';
