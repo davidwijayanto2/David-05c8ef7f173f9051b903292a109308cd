@@ -30,10 +30,13 @@
     $qry = "INSERT INTO user VALUES('$username','$password')";
                                     
     if($mysqli->query($qry)){
-        $_SESSION['username'] = $username;
-        $_SESSION['time']= date_format(date_create(),'Y-m-d H:i:s');    
-        header("location:../front-end/index.php");
-        exit;
+        $qry2 = "INSERT INTO session_login(username,statuslogin,created_at) VALUES('$username',1,now());";
+        if($mysqli->query($qry2)){
+            $_SESSION['username'] = $username;
+            $_SESSION['time']= date_format(date_create(),'Y-m-d H:i:s');    
+            header("location:../front-end/index.php");
+            exit;
+        }        
     }    
 
 ?>
