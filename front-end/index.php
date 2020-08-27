@@ -37,12 +37,12 @@
         var timeinterval = setInterval(updateClock, 1000);
     }
     function checklogin(){
-    	var flag = '<?php if(isset($_SESSION['username'])){echo false;}else{echo true;} ?>';    	
-    	if(flag){
+    	var flag = '<?php if(isset($_SESSION['username'])){echo true;}else{echo false;} ?>';    	
+    	if(flag=='false'){
     		window.location.href = "login.php";
     	} else {
-    		var username = '<?php echo $_SESSION['username']; ?>';
-    		var time = '<?php echo $_SESSION['time']; ?>';
+    		var username = '<?php if(isset($_SESSION['username'])){echo $_SESSION['username'];}?>';
+    		var time = '<?php if(isset($_SESSION['username'])){echo $_SESSION['time'];} ?>';
     		alert("Hai "+username+", waktu login anda "+time);
     	}
     }
